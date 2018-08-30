@@ -29,7 +29,7 @@ module.exports = {
 
     devServer: {
         contentBase: path.resolve(__dirname, 'public'),
-        historyApiFallback: true // this will inform the browser to use client-side routing instead of server-side routing
+        historyApiFallback: true
     },
     
     watch: true
