@@ -1,60 +1,70 @@
 import {createStore} from 'redux';
 
-const store = createStore((state = {count: 0}, action) => {
-    switch(action.type) {
+// Action generators
+const incrementCount = ({amount = 1} = {}) => ({
+    type: 'INCREMENT',
+    amount
+});
+
+const decrementCount = ({amount = 1} = {}) => ({
+    type: 'DECREMENT',
+    amount
+});
+
+const resetCount = () => ({
+    type: 'RESET'
+});
+
+const setCount = ({amount} = {}) => ({
+    type: 'SET',
+    amount
+});
+
+// Reducers
+// 1. Reducers are pure functions
+// 2. Never change state or action
+
+const countReducer = (state = {count: 0}, action) => {
+    const { type, amount } = action;    
+    
+    switch(type) {
         case 'INCREMENT':
-            return { count: state.count + 1 };
+            return { count: state.count + amount };
         
         case 'DECREMENT':
-            if(state.count > 0) {
-                return { count: state.count - 1 };
-            } else {
-                return { count: 0 };
-            }
+            return { count: state.count - amount };
+
+        case 'SET': 
+            return { count: amount };
         
         case 'RESET':
             return { count: 0 };
         
         default:
             return state;
-
     }
+};
+
+const store = createStore(countReducer);
+
+const unsubscribe = store.subscribe(() => {
+    //execute this everytime store changes
+    console.log(store.getState());
 });
 
-console.log(store.getState());
+// store.dispatch({
+//     type: 'INCREMENT', 
+//     amount: 5
+// });
+store.dispatch(incrementCount());
+store.dispatch(incrementCount({ amount: 10}));
 
-store.dispatch({
-    type: 'INCREMENT'
-});
+store.dispatch(decrementCount());
+store.dispatch(decrementCount({ amount: 3}));
 
-store.dispatch({
-    type: 'INCREMENT'
-});
+// call this will stop
+// unsubscribe();
 
-store.dispatch({
-    type: 'INCREMENT'
-});
+store.dispatch(resetCount());
 
-store.dispatch({
-    type: 'INCREMENT'
-});
-
-store.dispatch({
-    type: 'INCREMENT'
-});
-
-store.dispatch({
-    type: 'INCREMENT'
-});
-
-store.dispatch({
-    type: 'DECREMENT'
-});
-
-console.log(store.getState());
-
-store.dispatch({
-    type: 'RESET'
-});
-
-console.log(store.getState());
+store.dispatch(setCount({ amount: 2500 }));
