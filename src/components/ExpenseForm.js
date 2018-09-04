@@ -9,14 +9,17 @@ moment.locale('en-au');
 // console.log(typeof now);
 
 class ExpenseForm extends React.Component {
-    state = {
-        description: '',
-        note: '',
-        amount: '',
-        createdAt: moment(),
-        calendarFocused: false,
-        error: ''
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            description: props.expense ? props.expense.description : '',
+            note: props.expense ? props.expense.note : '',
+            amount: props.expense ? (props.expense.amount / 100).toString() : '',
+            createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
+            calendarFocused: false,
+            error: ''
+        }
+    }
 
     onDescriptionChange = event => {
         const description = event.target.value;
@@ -59,7 +62,7 @@ class ExpenseForm extends React.Component {
                 amount: parseFloat(this.state.amount, 10) * 100, //amount in cents
                 createdAt: this.state.createdAt.valueOf(), // convert moment obj to Unix timetamp in ms
                 note: this.state.note
-            })
+            });
         }
     }
 
