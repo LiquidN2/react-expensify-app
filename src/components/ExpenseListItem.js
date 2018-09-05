@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import moment from 'moment';
 
-moment.locale('en-au');
+// moment.locale('en-au');
 
 const ExpenseListItem = ({id, description, amount, createdAt}) => (
     <div>

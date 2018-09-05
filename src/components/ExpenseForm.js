@@ -2,9 +2,8 @@ import React from 'react';
 import moment from 'moment';
 import 'react-dates/initialize';
 import {SingleDatePicker} from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
 
-moment.locale('en-au');
+// moment.locale('en-au');
 // const now = moment();
 // console.log(typeof now);
 
