@@ -1,41 +1,6 @@
 import moment from 'moment';
 import expenseReducer from '../../reducers/expenses';
-import filtersReducer from '../../reducers/filters';
-
-let expenses;
-const initializeExpensesDatabase = () => {
-    expenses = [{
-        id: '1',
-        description: 'Gum',
-        note: '',
-        amount: 195,
-        createdAt: 0
-    }, {
-        id: '2',
-        description: 'Rent',
-        note: '',
-        amount: 109500,
-        createdAt: moment(0).subtract(4, 'days').valueOf()
-    }, {
-        id: '3',
-        description: 'Credit Card',
-        note: '',
-        amount: 4500,
-        createdAt: moment(0).add(4, 'days').valueOf()
-    }];
-};
-
-const clearExpensesDatabase = () => {
-    expenses = [];
-};
-
-beforeEach(() => {
-    initializeExpensesDatabase();
-});
-
-afterEach(() => {
-    clearExpensesDatabase();
-});
+import expenses from './../fixtures/expenses';
 
 test('should set default state', () => {
     const state = expenseReducer(undefined, {type: '@@INIT'});
