@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import 'react-dates/initialize';
-import {SingleDatePicker} from 'react-dates';
+import { SingleDatePicker } from 'react-dates';
 
 // moment.locale('en-au');
 // const now = moment();
@@ -34,27 +34,27 @@ class ExpenseForm extends React.Component {
         const amount = event.target.value;
 
         // validate 2 decimal float number
-        if(!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
+        if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
             this.setState(() => ({ amount }));
         }
     };
 
     onDateChange = createdAt => {
-        if(createdAt) {
+        if (createdAt) {
             this.setState(() => ({ createdAt }));
         }
     };
 
-    onFocusChange = ({focused}) => {
+    onFocusChange = ({ focused }) => {
         this.setState(() => ({ calendarFocused: focused }));
     };
 
     onSubmit = (event) => {
         event.preventDefault();
         if (!this.state.description || !this.state.amount) {
-            this.setState(() => ({error: 'Please provide description and amount'}));
+            this.setState(() => ({ error: 'Please provide description and amount' }));
         } else {
-            this.setState(() => ({error: ''}));
+            this.setState(() => ({ error: '' }));
             // console.log('submitted');
             this.props.onSubmit({
                 description: this.state.description,
@@ -70,20 +70,20 @@ class ExpenseForm extends React.Component {
             <div>
                 {!!this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.onSubmit}>
-                    <input 
+                    <input
                         type="text"
                         placeholder="description"
                         autoFocus
                         value={this.state.description}
                         onChange={this.onDescriptionChange}
                     />
-                    <input 
+                    <input
                         type="text"
                         placeholder="amount"
                         value={this.state.amount}
                         onChange={this.onAmountChange}
                     />
-                    <SingleDatePicker 
+                    <SingleDatePicker
                         id="expense_date"
                         date={this.state.createdAt}
                         onDateChange={this.onDateChange}

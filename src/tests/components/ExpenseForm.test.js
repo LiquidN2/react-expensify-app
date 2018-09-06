@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 import moment from 'moment';
 
 // ExpenseForm will use moment from __mocks__/moment.js instead to get fixed date
@@ -25,7 +25,7 @@ test('should render error for invalid form submission', () => {
 
     // provide mock 'event' object with preventDefault method
     wrapper.find('form').simulate('submit', {
-        preventDefault: () => {}
+        preventDefault: () => { }
     });
     expect(wrapper.state('error').length).toBeGreaterThan(0);
     expect(wrapper.state('error')).toBe('Please provide description and amount');
@@ -79,9 +79,9 @@ test('should not set amount if invalid input', () => {
 //-----------
 test('should call onSubmit prop for valid form submission', () => {
     const onSubmitSpy = jest.fn(); // this is a spy or mock function
-    const wrapper = shallow(<ExpenseForm expense={expenses[0]} onSubmit={onSubmitSpy}/>);
+    const wrapper = shallow(<ExpenseForm expense={expenses[0]} onSubmit={onSubmitSpy} />);
     wrapper.find('form').simulate('submit', {
-        preventDefault: () => {}
+        preventDefault: () => { }
     });
     expect(wrapper.state('error')).toEqual('');
     expect(onSubmitSpy).toHaveBeenLastCalledWith({
@@ -103,6 +103,6 @@ test('should set new date on date change', () => {
 //-----------
 test('should set calenderFocused on focus change', () => {
     const wrapper = shallow(<ExpenseForm />);
-    wrapper.find('#expense_date').prop('onFocusChange')({focused: true});
+    wrapper.find('#expense_date').prop('onFocusChange')({ focused: true });
     expect(wrapper.state('calendarFocused')).toBeTruthy();
 });
