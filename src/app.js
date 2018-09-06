@@ -19,8 +19,8 @@ moment.locale('en-au');
 const store = configureStore();
 
 store.dispatch(addExpense({description: 'Gas bill', amount: 8000, createdAt: 1536026400000}));
-store.dispatch(addExpense({description: 'Water bill', amount: 10000, createdAt: 500000000000}));
-store.dispatch(addExpense({description: 'Rent', amount: 100000, createdAt: 600000000}));
+store.dispatch(addExpense({description: 'Water bill', amount: 10000, createdAt: 1535776789000}));
+store.dispatch(addExpense({description: 'Rent', amount: 100000, createdAt: 1536208789000}));
 
 // store.dispatch(setTextFilter('water'));
 // setTimeout(() => {
