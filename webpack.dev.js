@@ -9,7 +9,8 @@ module.exports = merge(common, {
 
     devServer: {
         contentBase: path.resolve(__dirname, 'public'),
-        historyApiFallback: true
+        historyApiFallback: true,
+        publicPath: '/dist/'
     },
 
     watch: true

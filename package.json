@@ -8,7 +8,6 @@
     "build": "webpack --config webpack.prod.js",
     "build:dev": "webpack --config webpack.dev.js",
     "dev-server": "webpack-dev-server --open --config webpack.dev.js",
-    "serve": "live-server public/",
     "test": "jest --config=jest.config.json",
     "start": "node server/server.js",
     "heroku-postbuild": "yarn run build"
@@ -48,7 +47,6 @@
     "enzyme-adapter-react-16": "^1.4.0",
     "enzyme-to-json": "^3.3.4",
     "jest": "^23.5.0",
-    "live-server": "^1.2.0",
     "mini-css-extract-plugin": "^0.4.2",
     "node-sass": "^4.9.3",
     "optimize-css-assets-webpack-plugin": "^5.0.1",

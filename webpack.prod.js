@@ -32,7 +32,7 @@ module.exports = merge(common, {
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: "css/styles.css",
+            filename: "styles.css",
             chunkFilename: "[id].css"
         })
     ],
