@@ -2,7 +2,6 @@ const path = require('path');
 
 module.exports = {
     entry: './src/app.js',
-    // entry: './src/playground/hoc.js',
 
     output: {
         path: path.resolve(__dirname, 'public'),
@@ -20,18 +19,14 @@ module.exports = {
             test: /\.s?css$/,
             use: [
                 'style-loader',
-                'css-loader',
-                'sass-loader'
+                {
+                    loader: 'css-loader',
+                    options: { sourceMap: true }
+                },{
+                    loader: 'sass-loader',
+                    options: { sourceMap: true }
+                }
             ]
         }]
     },
-
-    devtool: 'cheap-module-eval-source-map',
-
-    devServer: {
-        contentBase: path.resolve(__dirname, 'public'),
-        historyApiFallback: true
-    },
-    
-    watch: true
 };
