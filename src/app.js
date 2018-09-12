@@ -39,3 +39,5 @@ const jsx = (
 );
 
 ReactDOM.render(jsx, document.getElementById('app'));
+// console.log('test');
+// console.log(APP_VERSION);
