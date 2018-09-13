@@ -2,6 +2,7 @@ import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import DotEnv from 'dotenv';
 
+// setup environment variables for test
 DotEnv.config({ path: '.env.test' });
 
 Enzyme.configure({

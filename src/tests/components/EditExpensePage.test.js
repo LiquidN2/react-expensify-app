@@ -14,8 +14,8 @@ beforeEach(() => {
     wrapper = shallow(
         <EditExpensePage 
             expense={expenses[0]} 
-            editExpense={onSubmitEditExpense}
-            removeExpense={onRemoveExpense} 
+            setEditExpense={onSubmitEditExpense}
+            setRemoveExpense={onRemoveExpense} 
             history={history} 
         />
     );

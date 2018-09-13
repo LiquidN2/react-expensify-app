@@ -12,14 +12,15 @@ import database from './../firebase/firebase';
 // step 2 - action generator returns object with action type (and data)
 // step 3 - component call dispatch passing in the newly returned obj in step 2
 // step 4 - redux store is updated
+// only works with redux-thunk installed - see store/configureStore.js
 
-// ADD_EXPENSE
+// ADD_EXPENSE - pure redux action generator returning action obj
 export const addExpense = expense => ({
     type: 'ADD_EXPENSE',
     expense
 });
 
-// only works with redux-thunk installed - see store/configureStore.js
+// ADD_EXPENSE - perform async CRUD actions with firebase and then dispatch regular redux action 
 export const startAddExpense = (expenseData = {}) => {
     return (dispatch) => {
         const {
@@ -46,6 +47,15 @@ export const removeExpense = id => ({
     id
 });
 
+// REMOVE_EXPENSE - async
+export const setRemoveExpense = id => {
+    return (dispatch) => {
+        return database.ref(`expenses/${id}`).remove().then(() => {
+            dispatch(removeExpense(id));
+        });
+    };
+};
+
 // EDIT_EXPENSE
 export const editExpense = (id, updates) => ({
     type: 'EDIT_EXPENSE',
@@ -53,12 +63,22 @@ export const editExpense = (id, updates) => ({
     updates
 });
 
+// EDIT_EXPENSE - async
+export const setEditExpense = (id, updates) => {
+    return (dispatch) => {
+        return database.ref(`expenses/${id}`).update({ ...updates }).then(() => {
+            dispatch(editExpense(id, updates));
+        });
+    };
+};
+
 // SET_EXPENSES
 export const setExpenses = expenses => ({
     type: 'SET_EXPENSES',
     expenses
 });
 
+// SET_EXPENSES - async
 export const startSetExpenses = () => {
     return (dispatch) => {
         return database.ref('expenses').once('value').then(snapshot => {
