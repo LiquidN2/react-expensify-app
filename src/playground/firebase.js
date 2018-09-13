@@ -1,7 +1,5 @@
 console.log('setting up database');
-
 import * as firebase from 'firebase';
-import moment from 'moment';
 
 const config = {
     apiKey: "AIzaSyCCk6oaOCvMd8ebqj_5_tLkCymLe5we0ow",
@@ -21,7 +19,7 @@ const database = firebase.database();
 //     snapshot.forEach(childSnapshot => {
 //         expenses.push({
 //             id: childSnapshot.key,
-//             ...childSnapshot
+//             ...childSnapshot.val()
 //         });
 //     });
 //     console.log(expenses);

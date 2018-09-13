@@ -16,6 +16,8 @@ module.exports = merge(common, {
     mode: 'development',
 
     plugins: [
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+
         // Manually passing node environment variables (process.env) to client-side javascript
         new webpack.DefinePlugin({
             'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY),
