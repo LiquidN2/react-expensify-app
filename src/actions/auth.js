@@ -7,6 +7,8 @@ export const login = uid => {
     };
 };
 
+// startLogin created as action obj to pass to compoment as props via mapDispatchToProps
+// this helps writting test case
 export const startLogin = () => {
     return () => {
         return firebase.auth().signInWithPopup(googleAuthProvider);
@@ -19,6 +21,8 @@ export const logout = () => {
     };
 };
 
+// startLogin created as action obj to pass to compoment as props via mapDispatchToProps
+// this helps writting test case
 export const startLogout = () => {
     return () => {
         return firebase.auth().signOut();

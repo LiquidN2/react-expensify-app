@@ -8,7 +8,7 @@ export const Header = props => {
         <header>
             <h1>Expensify</h1>
             <ul>
-                <li><NavLink to="/dashboard" activeClassName="is-active" exact={true}>Home</NavLink></li>
+                <li><NavLink to="/dashboard" activeClassName="is-active">Home</NavLink></li>
                 <li><NavLink to="/create" activeClassName="is-active">Add Expense</NavLink></li>
                 <button onClick={props.startLogout}>Logout</button>
             </ul>

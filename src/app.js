@@ -34,13 +34,11 @@ const renderApp = () => {
 
 ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 
-// store.dispatch(startSetExpenses()).then(() => {
-//     ReactDOM.render(jsx, document.getElementById('app'));
-// });
-
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
+        // if logged in update uid to store
         store.dispatch(login(user.uid));
+
         store.dispatch(startSetExpenses()).then(() => {
             renderApp();
             if (history.location.pathname === '/') {
@@ -48,6 +46,7 @@ firebase.auth().onAuthStateChanged(user => {
             }
         });
     } else {
+        // clear uid from store
         store.dispatch(logout());
         renderApp();
         history.push('/');

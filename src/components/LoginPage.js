@@ -1,12 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux'; 
+import { connect } from 'react-redux';
 import { startLogin } from './../actions/auth';
-
 
 export const LoginPage = props => {
     return (
         <div>
-            <button onClick={props.startLogin}>Login</button>
+            <button onClick={props.startLogin}>Login with Google</button>
         </div>
     );
 };

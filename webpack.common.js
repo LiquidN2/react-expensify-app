@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = {
     entry: './src/app.js',
+    // entry: './src/playground/firebaseAuthGoogle.js',
 
     output: {
         path: path.resolve(__dirname, 'public', 'dist'),
